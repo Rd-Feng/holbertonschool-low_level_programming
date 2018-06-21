@@ -25,15 +25,9 @@ int main(void)
 				 * combinations have been considered
 				 *
 				 */
-				if (i == 55)
+				if (i == 55 && j == 56 && k == 57)
 				{
-					if (j == 56)
-					{
-						if (k == 57)
-						{
-							putchar('\n');
-						}
-					}
+					putchar('\n');
 				}
 				else
 				{
