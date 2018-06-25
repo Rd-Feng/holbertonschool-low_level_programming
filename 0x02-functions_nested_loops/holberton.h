@@ -8,7 +8,7 @@
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _putchar(char);
+int _putchar(char c);
 
 /**
  * print_alphabet - Prints lowercase alphabet
@@ -23,4 +23,13 @@ int print_alphabet(void);
  * Return: 0 on success
  */
 int print_alphabet_x10(void);
+
+/**
+ * _islower - Checks for lowercase character
+ * @c: ASCII encoding of the character being checked
+ *
+ * Return: 1 if char is lowercase, 0 otherwise
+ */
+int _islower(int c);
+
 #endif /* _HOLBERTON_H_ */
