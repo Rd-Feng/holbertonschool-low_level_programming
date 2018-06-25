@@ -8,6 +8,12 @@
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _putchar(char c);
+int _putchar(char);
 
+/**
+ * print_alphabet - Prints lowercase alphabet
+ *
+ * Return: 0 on success
+ */
+int print_alphabet(void);
 #endif /* _HOLBERTON_H_ */
