@@ -48,4 +48,11 @@ int _isalpha(int c);
  */
 int print_sign(int n);
 
+/**
+ * _abs - Computes absolute value of an integer
+ * @int: original integer
+ * Return: 0 on success
+ */
+int _abs(int);
+
 #endif /* _HOLBERTON_H_ */
