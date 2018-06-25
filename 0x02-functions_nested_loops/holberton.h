@@ -32,4 +32,12 @@ int print_alphabet_x10(void);
  */
 int _islower(int c);
 
+/**
+ * _isalpha - Checks if a char is an alphabetic character
+ * @c: ASCII encodin of char being checked
+ *
+ * Return: 1 if is a letter, 0 otherwise
+ */
+int _isalpha(int c);
+
 #endif /* _HOLBERTON_H_ */
