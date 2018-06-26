@@ -90,4 +90,10 @@ int add(int, int);
  */
 void print_to_98(int n);
 
+/**
+ * print_times_table - prints the n times table starting 0
+ * @n: n
+ */
+void print_times_table(int n);
+
 #endif /* _HOLBERTON_H_ */
