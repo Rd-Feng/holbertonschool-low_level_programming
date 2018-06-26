@@ -68,4 +68,11 @@ int print_last_digit(int);
  */
 void jack_bauer(void);
 
+/**
+ * times_table - prints the 9 times table starting 0
+ *
+ * Return: 0 on success
+ */
+void times_table(void);
+
 #endif /* _HOLBERTON_H_ */
