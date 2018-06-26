@@ -30,9 +30,7 @@ void times_table(void)
 			if (j != 9)
 			{
 				_putchar(',');
-				/* distance to the next number
-				 * equals the line index i
-				 */
+				/* check next number printed */
 				if ((num + i) < 10)
 				{
 					_putchar(' ');
