@@ -75,4 +75,12 @@ void jack_bauer(void);
  */
 void times_table(void);
 
+/**
+ * add - adds two integers
+ * @int: first integer
+ * @int: second integer
+ *
+ * Return: result of addition
+ */
+int add(int, int);
 #endif /* _HOLBERTON_H_ */
