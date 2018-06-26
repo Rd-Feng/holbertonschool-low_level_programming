@@ -83,4 +83,11 @@ void times_table(void);
  * Return: result of addition
  */
 int add(int, int);
+
+/**
+ * print_to_98 - prints natural numbers from n to 98
+ * @n: starting number
+ */
+void print_to_98(int n);
+
 #endif /* _HOLBERTON_H_ */
