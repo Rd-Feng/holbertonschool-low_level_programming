@@ -1,5 +1,5 @@
 #include "holberton.h"
-
+#include "6-abs.c"
 /**
  * print_last_digit - Prints the last digit of a number
  * @n: number
@@ -13,7 +13,7 @@ int print_last_digit(int n)
 	tmp = n % 10;
 	if (tmp < 0)
 	{
-		tmp *= -1;
+		tmp = _abs(n);
 	}
 	_putchar('0' + tmp);
 	return (tmp);
