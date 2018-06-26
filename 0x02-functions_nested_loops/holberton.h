@@ -55,4 +55,17 @@ int print_sign(int n);
  */
 int _abs(int);
 
+/**
+ * print_last_digit - Prints the last digit of a number
+ * @int: number
+ *
+ * Return: the value of the last digit
+ */
+int print_last_digit(int);
+
+/**
+ * jack_bauer - prints every minute of a day
+ */
+void jack_bauer(void);
+
 #endif /* _HOLBERTON_H_ */
