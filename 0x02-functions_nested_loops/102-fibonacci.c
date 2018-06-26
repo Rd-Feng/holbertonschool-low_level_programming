@@ -7,15 +7,15 @@
  */
 int main(void)
 {
-	unsigned int n, m, tmp;
+	unsigned long n, m, tmp;
 	int i;
 
 	n = 1;
 	m = 2;
-	printf("%u, ", n);
+	printf("%lu, ", n);
 	for (i = 1; i < 50; i++)
 	{
-		printf("%u", m);
+		printf("%lu", m);
 		if (i == 49)
 		{
 			printf("\n");
