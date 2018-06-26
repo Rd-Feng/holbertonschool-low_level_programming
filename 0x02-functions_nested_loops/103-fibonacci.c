@@ -12,7 +12,7 @@ int main(void)
 
 	n = 1;
 	m = 2;
-	sum = n;
+	sum = 0;
 	while (m < 4000000)
 	{
 		if (m % 2 == 0)
