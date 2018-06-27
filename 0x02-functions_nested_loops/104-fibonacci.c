@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * fibonacci - Prints first 98 fibonacci numbers starting 1, 2
+ * main - Prints first 98 fibonacci numbers starting 1, 2
  *
  * Return: 0 on success
  */
@@ -18,11 +18,11 @@ int main(void)
 	m3 = 2;
 	printf("%lu, ", n3);
 
-	for ( i = 1; i < 98; i++)
+	for (i = 1; i < 98; i++)
 	{
 		if (m1 != 0)
 			printf("%lu%07lu%07lu", m1, m2, m3);
-		else if(m2 != 0)
+		else if (m2 != 0)
 			printf("%lu%07lu", m2, m3);
 		else
 			printf("%lu", m3);
