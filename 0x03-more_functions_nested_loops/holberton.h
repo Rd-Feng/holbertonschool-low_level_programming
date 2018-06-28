@@ -45,4 +45,21 @@ void print_numbers(void);
  */
 void print_most_numbers(void);
 
+/**
+ * more_numbers - prints from 0 to 14
+ */
+void more_numbers(void);
+
+/**
+ * print_line - prints a straight line with _
+ * @n: number of times _ should be printed
+ */
+void print_line(int n);
+
+/**
+ * print_diagonal - prints a diagonal line with '\'
+ * @n: number of times '\' should be printed
+ */
+void print_diagonal(int n);
+
 #endif /* _HOLBERTON_H_ */
