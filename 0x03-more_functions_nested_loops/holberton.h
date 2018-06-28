@@ -68,4 +68,10 @@ void print_diagonal(int n);
  */
 void print_square(int size);
 
+/**
+ * print_triangle - print triangle with base length of size
+ * @size: base length
+ */
+void print_triangle(int size);
+
 #endif /* _HOLBERTON_H_ */
