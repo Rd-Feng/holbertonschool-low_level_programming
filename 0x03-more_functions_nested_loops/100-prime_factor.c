@@ -12,6 +12,17 @@ int main(void)
 
 	num = 612852475143;
 	i = 3;
+	highest = i;
+
+	while (!(num % 2))
+	{
+		num /= 2;
+	}
+	if (num == 1)
+	{
+		printf("%d\n", 2);
+		return (0);
+	}
 
 	while (1)
 	{
