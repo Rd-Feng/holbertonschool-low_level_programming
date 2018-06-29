@@ -14,6 +14,8 @@ int main(void)
 	i = 3;
 	highest = i;
 
+	/* eliminate  factor 2 */
+	/* if this loop reduces num to 1, num only has factor 2 */
 	while (!(num % 2))
 	{
 		num /= 2;
@@ -23,7 +25,7 @@ int main(void)
 		printf("%d\n", 2);
 		return (0);
 	}
-
+	/* num has factors other than two */
 	while (1)
 	{
 		while (num % i == 0)
