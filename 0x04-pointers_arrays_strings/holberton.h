@@ -61,4 +61,11 @@ void puts2(char *str);
  */
 void puts_half(char *str);
 
+/**
+ * print_array - print n elements of an array of integers
+ * @a: array
+ * @n: number of elements to print
+ */
+void print_array(int *a, int n);
+
 #endif /* _HOLBERTON_H_ */
