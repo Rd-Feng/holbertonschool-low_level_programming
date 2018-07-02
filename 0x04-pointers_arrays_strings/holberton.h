@@ -49,4 +49,9 @@ void print_rev(char *s);
  */
 void rev_string(char *s);
 
+/**
+ * puts2 - prints one char out of 2 of a string
+ * @str: string
+ */
+void puts2(char *str);
 #endif /* _HOLBERTON_H_ */
