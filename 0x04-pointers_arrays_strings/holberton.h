@@ -54,4 +54,11 @@ void rev_string(char *s);
  * @str: string
  */
 void puts2(char *str);
+
+/**
+ * puts_half - prints half of a string
+ * @str: string to be printed
+ */
+void puts_half(char *str);
+
 #endif /* _HOLBERTON_H_ */
