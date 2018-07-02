@@ -16,4 +16,19 @@ int _putchar(char c);
  */
 void reset_to_98(int *n);
 
+/**
+ * swap_int - swaps values that a and b are pointing to
+ * @a: first int
+ * @b: second int
+ */
+void swap_int(int *a, int *b);
+
+/**
+ * _strlen - returns the length of a string
+ * @s: string
+ *
+ * Return: length of string s
+ */
+int _strlen(char *s);
+
 #endif /* _HOLBERTON_H_ */
