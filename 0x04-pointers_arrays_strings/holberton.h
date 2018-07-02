@@ -68,4 +68,12 @@ void puts_half(char *str);
  */
 void print_array(int *a, int n);
 
+/**
+ * _strcpy - copies the string including terminating byte
+ * @dest: return pointer
+ * @src: original string
+ * Return: dest, pointer to the new string
+ */
+char *_strcpy(char *dest, char *src);
+
 #endif /* _HOLBERTON_H_ */
