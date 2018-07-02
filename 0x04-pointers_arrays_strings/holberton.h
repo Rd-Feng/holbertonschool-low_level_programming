@@ -31,4 +31,16 @@ void swap_int(int *a, int *b);
  */
 int _strlen(char *s);
 
+/**
+ * _puts - prints a string followed by a new line to stdout
+ * @str: string to be printed
+ */
+void _puts(char *str);
+
+/**
+ * print_rev - prints a string in reverse
+ * @s: string to be printed in reverse
+ */
+void print_rev(char *s);
+
 #endif /* _HOLBERTON_H_ */
