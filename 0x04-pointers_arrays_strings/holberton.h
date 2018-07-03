@@ -76,4 +76,12 @@ void print_array(int *a, int n);
  */
 char *_strcpy(char *dest, char *src);
 
+/**
+ * _atoi - convert a string to integer
+ * @s: string
+ *
+ * Return: integer in string, 0 if no integer found
+ */
+int _atoi(char *s);
+
 #endif /* _HOLBERTON_H_ */
