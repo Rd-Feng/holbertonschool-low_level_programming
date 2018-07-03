@@ -10,9 +10,9 @@ void puts2(char *str)
 	int i;
 
 	last_index = 0;
-	while (str[++last_index] != '\0')
+	while (str[last_index++] != '\0')
 		;
-	for (i = 0; i < last_index; i += 2)
+	for (i = 0; i < last_index - 1; i += 2)
 		_putchar(str[i]);
 	_putchar('\n');
 }
