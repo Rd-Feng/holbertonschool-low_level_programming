@@ -20,7 +20,7 @@ int isDigit(char c)
  */
 int _atoi(char *s)
 {
-	int res;
+	unsigned int res;
 	int num_digit;
 	int is_positive;
 	int i, j, head;
@@ -50,5 +50,5 @@ int _atoi(char *s)
 		if (i != head)
 			exp *= 10;
 	}
-	return (is_positive ? res : -res);
+	return ((int) (is_positive ? res : -res));
 }
