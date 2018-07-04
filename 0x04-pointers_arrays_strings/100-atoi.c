@@ -47,7 +47,8 @@ int _atoi(char *s)
 	for (i = head + num_digit - 1; i >= head; i--)
 	{
 		res += (s[i] - '0') * exp;
-		exp *= 10;
+		if (i != head)
+			exp *= 10;
 	}
 	return (is_positive ? res : -res);
 }
