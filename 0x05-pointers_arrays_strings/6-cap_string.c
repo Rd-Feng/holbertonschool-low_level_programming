@@ -1,6 +1,5 @@
 #include "holberton.h"
 
-
 /**
  * is_separator - check if a character is a separator
  * @c: candidate character
