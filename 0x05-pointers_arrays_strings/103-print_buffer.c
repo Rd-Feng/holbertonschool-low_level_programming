@@ -1,18 +1,16 @@
 #include "holberton.h"
 #include <stdio.h>
-#include <stdint.h>
 
 /**
- * isAlpha - check if character c is in alphabet
+ * isPrintable - check if c is printable
  * @c: candidate character
  *
- * Return: 1 if true, 0 otherwise
+ * Return: true if printable, false otherwise
  */
-int isAlpha(char c)
+int isPrintable(char c)
 {
-	return ((c <= 'z' && c >= 'a') || (c <= 'Z' && c >= 'A') ? 1 : 0);
+	return (c >= 32 && c <= 126);
 }
-
 /**
  * print_buffer - print content in buffer b
  * @b: buffer
@@ -49,7 +47,7 @@ void print_buffer(char *b, int size)
 		{
 			if (size2 > 0)
 			{
-				printf("%c", isAlpha(*ptr) ? (*ptr) : '.');
+				printf("%c", isPrintable(*ptr) ? (*ptr) : '.');
 				size2--;
 				ptr++;
 			}
