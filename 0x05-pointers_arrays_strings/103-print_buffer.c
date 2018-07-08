@@ -10,7 +10,7 @@
  */
 int isAlpha(char c)
 {
-	return((c <= 'z' && c >= 'a') || (c <= 'Z' && c >= 'A') ? 1 : 0);
+	return ((c <= 'z' && c >= 'a') || (c <= 'Z' && c >= 'A') ? 1 : 0);
 }
 
 /**
