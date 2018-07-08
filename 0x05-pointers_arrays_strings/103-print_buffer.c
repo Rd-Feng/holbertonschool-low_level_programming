@@ -23,6 +23,11 @@ void print_buffer(char *b, int size)
 	char *ptr = b;
 	int size2 = size;
 
+	if (size <= 0)
+	{
+		printf("\n");
+		return;
+	}
 	for (pos = 0; size > 0; pos++)
 	{
 		printf("%08x: ", pos * 10);
