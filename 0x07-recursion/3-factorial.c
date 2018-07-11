@@ -2,6 +2,7 @@
 
 /**
  * factorial - calculate factorial of a given number
+ * @n: given number
  *
  * Return: factorial of a number, -1 on error
  */
