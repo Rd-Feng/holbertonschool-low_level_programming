@@ -7,7 +7,7 @@
  *
  * Return: square root of n, -1 if not found
  */
-int helper (int guess, int n)
+int helper(int guess, int n)
 {
 	if (guess * guess > n)
 		return (-1);
