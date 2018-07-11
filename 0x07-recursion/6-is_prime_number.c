@@ -12,7 +12,7 @@ int helper(int guess, int n)
 	if (guess * guess > n)
 		return (1);
 	else if (n / guess * guess != n)
-		return helper(guess + 1, n);
+		return (helper(guess + 1, n));
 	else
 		return (0);
 }
