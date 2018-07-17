@@ -1,6 +1,5 @@
 #include "holberton.h"
 #include <stdlib.h>
-#include <stdio.h>
 /**
  * str_concat - concatenates two strings and put result in newly
  * allocated space in memory. String 1 will be added a new line char,
