@@ -19,7 +19,8 @@ char *_strdup(char *str)
 		len++;
 		str++;
 	}
-	if ((ptr = (char *) malloc(sizeof(char) * (len + 1))))
+	ptr = (char *) malloc(sizeof(char) * (len + 1));
+	if (ptr)
 	{
 		while (len >= 0)
 			*(ptr + len--) = *(str--);
