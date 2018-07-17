@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 /**
@@ -23,9 +24,9 @@ int **alloc_grid(int width, int height)
 			{
 				*(ptr + i) =
 					(int *) malloc(sizeof(int) * width);
-				if (!(ptr + i))
+				if (!*((ptr + i)))
 				{
-					error = 0;
+					error = 1;
 					break;
 				}
 			}
