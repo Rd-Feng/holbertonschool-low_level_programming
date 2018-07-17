@@ -46,12 +46,13 @@ char *str_concat(char *s1, char *s2)
 char *argstostr(int ac, char **av)
 {
 	int i;
-	char *res, *tmp;
+	char *res = NULL, *tmp;
 
 	if (ac == 0 || !av)
 		return (NULL);
 	/* initialize the res string */
-	res = str_concat(*av, "");
+	if (*av)
+		res = str_concat(*av, "");
 	if (res)
 	{
 		for (i = 1; i < ac; i++)
