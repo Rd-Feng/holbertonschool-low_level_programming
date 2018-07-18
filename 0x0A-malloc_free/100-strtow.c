@@ -66,6 +66,8 @@ char **strtow(char *str)
 		}
 		len++;
 	}
+	if (count == 0)
+		return (NULL);
 	ptr = (char **) malloc(sizeof(char *) * (count + 1));
 	if (ptr)
 	{
