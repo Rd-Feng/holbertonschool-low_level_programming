@@ -43,7 +43,7 @@ char **strtow(char *str)
 	int inWord = 0, error = 0;
 	char **ptr = NULL;
 
-	if (str == NULL || str == "")
+	if (str == NULL || *str == '\0')
 		return (NULL);
 	/*
 	 * count number of words
