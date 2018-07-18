@@ -1,34 +1,6 @@
 #include "holberton.h"
 #include <stdlib.h>
 
-/**
- * getWord - get one word starting at given index of a string
- * The word is put into a new allocated memory block
- * @i: starting index of the word
- * @s: string
- *
- * Return: address of memory block allocated to the word, NULL on error
- */
-char *getWord(int i, char *s)
-{
-	int n, endIndex = i;
-	char *ptr = NULL;
-
-	while (*(s + endIndex) != ' ' && *(s + endIndex) != '\0')
-	{
-		endIndex++;
-	}
-	ptr = (char *) malloc(sizeof(char) * (endIndex - i + 1));
-	if (ptr)
-	{
-		for (n = i; n < endIndex; n++)
-		{
-			*(ptr + n - i) = *(s + n);
-		}
-	}
-	*(ptr + n - i) = '\0';
-	return (ptr);
-}
 
 /**
  * strtow - split string to words. words are separated by spaces
@@ -42,7 +14,7 @@ char **strtow(char *str)
 	int i = 0, found = 0, len = 0, count = 0;
 	int inWord = 0, error = 0;
 	char **ptr = NULL;
-
+	int endIndex, n;
 	if (!str || !*str)
 		return (NULL);
 	/*
@@ -77,9 +49,27 @@ char **strtow(char *str)
 				if (!inWord)
 				{
 					inWord = 1;
-					*(ptr + found) = getWord(i, str);
-					if (!*(ptr + found++))
+					/* get a word and allocate memory */
+					endIndex = i;
+					while (*(str + endIndex) != ' '
+					       && *(str + endIndex) != '\0')
+					{
+						endIndex++;
+					}
+					ptr[found] = (char *)
+						malloc(sizeof(char)*
+						       (endIndex - i + 1));
+					if (!ptr[found])
 						error = 1;
+					else
+					{
+						for (n = i; n < endIndex; n++)
+						{
+							ptr[found][n - i] =
+								str[n];
+						}
+						ptr[found++][n - i] = '\0';
+					}
 				}
 			}
 			else
