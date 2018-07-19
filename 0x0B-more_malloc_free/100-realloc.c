@@ -13,11 +13,10 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	char *newPtr = NULL;
 	int num;
 
-	if (!ptr || old_size == 0)
+	if (!ptr)
 	{
-		/* ptr pointing to NULL or errant input */
 		free(ptr);
-		return (NULL);
+		return (malloc(new_size));
 	}
 	else if (new_size == 0)
 	{
