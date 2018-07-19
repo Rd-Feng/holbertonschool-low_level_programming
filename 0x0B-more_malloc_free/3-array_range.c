@@ -13,10 +13,10 @@ int *array_range(int min, int max)
 	unsigned long size = 0;
 	int i = 0;
 
-	size = max - min + 1;
+	size = max - min;
 	if (size > 0)
 	{
-		ptr = malloc(size * sizeof(*ptr));
+		ptr = malloc((size + 1) * sizeof(*ptr));
 		if (ptr)
 		{
 			for (i = min; i <= max; i++)
