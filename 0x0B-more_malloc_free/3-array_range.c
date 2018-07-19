@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <stdio.h>
+
 /**
  * array_range - creates an array of integers from min to max
  * @min: int
@@ -13,10 +13,10 @@ int *array_range(int min, int max)
 	unsigned long size = 0;
 	int i = 0;
 
-	size = max - min + 1;
-	if (size > 0)
+	size = max - min;
+	if (max >= min)
 	{
-		ptr = malloc(size * sizeof(*ptr));
+		ptr = malloc(sizeof(*ptr) * size + sizeof(*ptr));
 		if (ptr)
 		{
 			for (i = min; i <= max; i++)
