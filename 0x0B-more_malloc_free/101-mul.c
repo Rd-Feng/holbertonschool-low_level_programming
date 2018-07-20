@@ -135,6 +135,48 @@ int isNumber(char *str)
 }
 
 /**
+ * cleanLeadingZero - removing leading 0's in a number
+ * @n: number represented in string
+ *
+ * Return: pointer to resulting string
+ */
+char *cleanLeadingZero(char *n)
+{
+	unsigned long strSize = 0, numSize = 0, i = 0;
+	int valid = 0;
+
+	while (*(n + strSize))
+	{
+		if (*(n + strSize) != '0')
+		{
+			valid = 1;
+			numSize++;
+		}
+		else
+		{
+			if (valid)
+				numSize++;
+		}
+		strSize++;
+	}
+	if (numSize)
+	{
+		while (i < numSize)
+		{
+			*(n + i) = *(n + strSize - numSize + i);
+			i++;
+		}
+		*(n + numSize) = '\0';
+	}
+	else
+	{
+		*n = '0';
+		*(n + 1) = '\0';
+	}
+	return (n);
+}
+
+/**
  * main - multiply two numbers
  * @argc: argument count
  * @argv: arguments
@@ -184,6 +226,7 @@ int main(int argc, char **argv)
 		/* reset buffer */
 		buf = infinite_add("0", "0", buf, total);
 	}
+	ptr = cleanLeadingZero(ptr);
 	printf("%s\n", ptr);
 	free(buf);
 	free(ptr);
