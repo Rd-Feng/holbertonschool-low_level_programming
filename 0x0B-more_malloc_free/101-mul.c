@@ -10,7 +10,7 @@
  */
 char *mulTen(char *num, int n)
 {
-	unsigned long len = 0, i;
+	unsigned long len = 0;
 
 	while (*(num + len))
 		len++;
@@ -175,7 +175,7 @@ int main(int argc, char **argv)
 	buf = infinite_add("0", "0", buf, total);
 	for (i = 0; i < len2; i++)
 	{
-		for (j = 0; j < argv[2][i] - '0'; j++)
+		for (j = 0; j < argv[2][i] - (unsigned long)'0'; j++)
 		{
 			buf = infinite_add(buf, argv[1], buf, total);
 		}
