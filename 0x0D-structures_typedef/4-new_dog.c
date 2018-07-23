@@ -14,6 +14,8 @@ char *_strcpy(char *str)
 
 	while (*(str + len))
 		len++;
+	if (len == 0)
+		return (NULL);
 	ptr = malloc(sizeof(*ptr) * (len + 1));
 	if (ptr)
 	{
@@ -51,6 +53,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 		ptr->owner = _strcpy(owner);
 		if (!ptr->name || !ptr->owner)
 		{
+			free(ptr->name);
+			free(ptr->owner);
 			free(ptr);
 			return (NULL);
 		}
