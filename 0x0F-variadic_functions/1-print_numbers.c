@@ -9,7 +9,7 @@
 void print_numbers(const char *separator, const unsigned int n, ...)
 {
 	va_list params;
-	unsigned i;
+	unsigned int i;
 
 	va_start(params, n);
 	for (i = 1; i <= n; i++)
