@@ -49,10 +49,11 @@ void print_all(const char * const format, ...)
 		if (!*(format + i + 1))
 		{
 			printf("\n");
-			break;
+			va_end(params);
+			return;
 		}
 		printf(", ");
 		i++;
 	}
-	va_end(params);
+	printf("\n");
 }
