@@ -1,5 +1,5 @@
 section	.data
-str:	db	"Hello Holberton",10
+str:	db	"Hello, Holberton", 10
 
 section	.text
 global	main
@@ -9,9 +9,9 @@ main:
 	mov	rax, 1		;syscall for sys_write
 	mov	rdi, 1		;..
 	mov	rsi, str	;..
-	mov	rdx, 16		;..
-	syscall			;write(1, msg, 17);
+	mov	rdx, 17		;..
+	syscall			;write(1, str, 17);
 
 	pop	rbp
-	mov	rax, rdx
+	mov	rax, 0
 	ret
