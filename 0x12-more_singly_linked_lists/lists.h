@@ -15,6 +15,18 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
+/**
+ * struct l_printed - linked list to hold address of nodes that
+ * are already printed
+ * @addr: address in unsigned long format
+ * @next: next
+ */
+typedef struct l_printed
+{
+	unsigned long addr;
+	struct l_printed *next;
+} l_printed;
+
 int _putchar(char c);
 
 size_t print_listint(const listint_t *h);
@@ -40,4 +52,6 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n);
 int delete_nodeint_at_index(listint_t **head, unsigned int index);
 
 listint_t *reverse_listint(listint_t **head);
+
+size_t print_listint_safe(const listint_t *head);
 #endif
