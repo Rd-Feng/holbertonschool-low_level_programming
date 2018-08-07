@@ -9,7 +9,7 @@ void free_printed(l_printed *head);
  * free_listint_safe - free a singly linked list
  * Stop at the already freed node if there is a loop
  * in the list
- * @head: pointer to head node of list
+ * @h: pointer to head node of list
  *
  * Return: number of nodes in the freed list
  */
