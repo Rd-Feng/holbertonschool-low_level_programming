@@ -9,6 +9,7 @@
  * handle_rdwr_error - handle read write error
  * @src: source file fd
  * @dest: dest file fd
+ * @errcode: error code
  */
 void handle_rdwr_error(int src, int dest, int errcode)
 {
