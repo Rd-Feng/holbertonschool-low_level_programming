@@ -17,7 +17,7 @@ int main(int argc, char **args)
 	int src = -1, dest = -1; /* file descripters */
 	char buffer[BUFFER_SIZE] = {0};
 	int rd_count, wr_count;
-	int src_status, dest_status;
+	int status;
 
 	if (argc != 3)
 	{
@@ -59,14 +59,17 @@ int main(int argc, char **args)
 			exit(99);
 		}
 	} while (rd_count);
-	src_status = close(src);
-	if (src_status == -1)
+	status = close(src);
+	if (status == -1)
+	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", src);
-	dest_status = close(dest);
-	if (dest_status == -1)
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", dest);
-	if (src_status == -1 || dest_status == -1)
 		exit(100);
-	else
-		return (0);
+	}
+	status = close(dest);
+	if (status == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", dest);
+		exit(100);
+	}
+	return (0);
 }
