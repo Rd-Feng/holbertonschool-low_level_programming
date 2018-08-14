@@ -35,7 +35,7 @@ int main(int argc, char **args)
 	dest = open(args[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (dest < 0)
 	{
-		dprintf(STDERR_FILENO, "on open: Error: Can't write to %s\n", args[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", args[2]);
 		close(src);
 		exit(99);
 	}
