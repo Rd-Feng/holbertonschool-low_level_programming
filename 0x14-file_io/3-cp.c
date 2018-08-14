@@ -29,14 +29,12 @@ int main(int argc, char **args)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n",
 			args[1]);
-		close(src);
 		exit(98);
 	}
 	dest = open(args[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (dest < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", args[2]);
-		close(src);
 		exit(99);
 	}
 	do {
@@ -45,8 +43,6 @@ int main(int argc, char **args)
 		{
 			dprintf(STDERR_FILENO,
 				"Error: Can't read from file %s\n", args[1]);
-			close(src);
-			close(dest);
 			exit(98);
 		}
 		wr_count = write(dest, buffer, rd_count);
@@ -54,8 +50,6 @@ int main(int argc, char **args)
 		{
 			dprintf(STDERR_FILENO,
 				"Error: Can't write to %s\n", args[2]);
-			close(src);
-			close(dest);
 			exit(99);
 		}
 	} while (rd_count);
