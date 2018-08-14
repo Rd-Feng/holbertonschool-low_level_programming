@@ -45,12 +45,15 @@ int main(int argc, char **args)
 				"Error: Can't read from file %s\n", args[1]);
 			exit(98);
 		}
-		wr_count = write(dest, buffer, rd_count);
-		if (wr_count < 0)
+		if (rd_count > 0)
 		{
-			dprintf(STDERR_FILENO,
-				"Error: Can't write to %s\n", args[2]);
-			exit(99);
+			wr_count = write(dest, buffer, rd_count);
+			if (wr_count < 0)
+			{
+				dprintf(STDERR_FILENO,
+					"Error: Can't write to %s\n", args[2]);
+				exit(99);
+			}
 		}
 	} while (rd_count);
 	status = close(src);
