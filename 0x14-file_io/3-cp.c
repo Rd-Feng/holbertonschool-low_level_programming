@@ -21,7 +21,7 @@ int main(int argc, char **args)
 
 	if (argc != 3)
 	{
-		dprintf(STDOUT_FILENO, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	src = open(args[1], O_RDONLY);
