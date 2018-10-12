@@ -41,7 +41,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	unsigned long int index;
 	shash_node_t *newNode = NULL, *ptr = NULL;
 
-	if (!ht || !key || *key == 0)
+	if (!ht || !key || *key == 0 || !value)
 		return (0);
 	index = key_index((const unsigned char *) key, ht->size);
 	ptr = ht->array[index];
