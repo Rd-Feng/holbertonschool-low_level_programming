@@ -29,6 +29,40 @@ shash_table_t *shash_table_create(unsigned long int size)
 	return (ht);
 }
 /**
+ * shash_set_helper - add node into sorted linked list
+ * @ht: hash table
+ * @newNode: newNode
+ */
+void shash_set_helper(shash_table_t *ht, shash_node_t *newNode)
+{
+	shash_node_t *ptr = NULL;
+
+	newNode->sprev = NULL;
+	newNode->snext = ht->shead;
+	if (!ht->shead || strcmp(newNode->key, ht->shead->key) <= 0)
+	{
+		if (ht->shead)
+			ht->shead->sprev = newNode;
+		ht->shead = newNode;
+		if (!ht->stail)
+			ht->stail = newNode;
+	}
+	else
+	{
+		do {
+			ptr = newNode->snext;
+			newNode->snext = ptr->snext;
+		} while (newNode->snext &&
+			 strcmp(newNode->key, newNode->snext->key) > 0);
+		newNode->sprev = ptr;
+		if (ptr->snext)
+			ptr->snext->sprev = newNode;
+		else
+			ht->stail = newNode;
+		ptr->snext = newNode;
+	}
+}
+/**
  * shash_table_set - add a node into hash table
  * @ht: hash table
  * @key: key
@@ -73,30 +107,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	ht->array[index] = newNode;
 
 	/* add to sorted linked list */
-	newNode->sprev = NULL;
-	newNode->snext = ht->shead;
-	if (!ht->shead || strcmp(newNode->key, ht->shead->key) <= 0)
-	{
-		if (ht->shead)
-			ht->shead->sprev = newNode;
-		ht->shead = newNode;
-		if (!ht->stail)
-			ht->stail = newNode;
-	}
-	else
-	{
-		do {
-			ptr = newNode->snext;
-			newNode->snext = ptr->snext;
-		} while (newNode->snext &&
-			 strcmp(newNode->key, newNode->snext->key) > 0);
-		newNode->sprev = ptr;
-		if (ptr->snext)
-			ptr->snext->sprev = newNode;
-		else
-			ht->stail = newNode;
-		ptr->snext = newNode;
-	}
+	shash_set_helper(ht, newNode);
 	return (1);
 }
 /**
@@ -111,7 +122,7 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 	unsigned long int index;
 	shash_node_t *ptr = NULL;
 
-	if (!ht || !ht->array|| !key || *key == 0)
+	if (!ht || !ht->array || !key || *key == 0)
 		return (NULL);
 	index = key_index((const unsigned char *) key, ht->size);
 	for (ptr = ht->array[index]; ptr; ptr = ptr->next)
@@ -151,7 +162,7 @@ void shash_table_print(const shash_table_t *ht)
 void shash_table_print_rev(const shash_table_t *ht)
 {
 	shash_node_t *ptr = NULL;
-        int isFirst = 1;
+	int isFirst = 1;
 
 	if (!ht || !ht->array)
 		return;
