@@ -197,22 +197,14 @@ void shash_table_delete(shash_table_t *ht)
 			while (ptr)
 			{
 				free(ptr->key);
-				ptr->key = NULL;
 				free(ptr->value);
-				ptr->value = NULL;
 				tmp = ptr;
 				ptr = ptr->next;
-				tmp->snext = NULL;
-				tmp->sprev = NULL;
 				free(tmp);
-				tmp = NULL;
 			}
 		}
-		ht->shead = NULL;
-		ht->stail = NULL;
 		free(ht->array);
 		ht->array = NULL;
 		free(ht);
-		ht = NULL;
 	}
 }
