@@ -51,3 +51,13 @@ void swap(int *array, int i, int j, size_t size)
 	array[j] = tmp;
 	print_array(array, size);
 }
+
+void swap(int *array, int i, int j, size_t size)
+{
+	int tmp;
+
+	tmp = array[i];
+	array[i] = array[j];
+	array[j] = tmp;
+	print_array(array, size);
+}
