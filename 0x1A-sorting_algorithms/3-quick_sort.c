@@ -1,5 +1,7 @@
 #include "sort.h"
 void swap(int *array, int i, int j, size_t size);
+void helper(int *array, size_t size, int lo, int hi);
+int partition(int *array, size_t size, int lo, int hi);
 /**
  * quick_sort - quick sort array
  * @array: array
@@ -7,33 +9,48 @@ void swap(int *array, int i, int j, size_t size);
  */
 void quick_sort(int *array, size_t size)
 {
-	int p_idx = size - 1, i = 0, j = 0;
-	int pivot;
+	helper(array, size, 0, size - 1);
+}
+/**
+ * helper - helper of quick_sort function
+ * @array: new array to sort
+ * @size: size of new array
+ * @lo: lower bound
+ * @hi: upper bound
+ */
+void helper(int *array, size_t size, int lo, int hi)
+{
+	int p;
 
-	if (size < 2)
-		return;
-	p_idx = size - 1;
-	while (p_idx >= 0)
+	if (lo < hi)
 	{
-		i = 0;
-		pivot = array[p_idx];
-		for (j = 0; j < p_idx; j++)
-		{
-			if (array[j] < array[p_idx])
-			{
-				if (i != j)
-					swap(array, i, j, size);
-				i++;
-			}
-		}
-		if (i != p_idx)
-			swap(array, i, p_idx, size);
-		if (array[p_idx] == pivot)
-		{
-			p_idx--;
-			pivot = array[p_idx];
-		}
+		p = partition(array, size, lo, hi);
+		helper(array, size, lo, p - 1);
+		helper(array, size, p + 1, hi);
 	}
+}
+/**
+ * partition - place pivot and partition the array
+ * @array: array
+ * @size: size
+ * @lo: lower bound
+ * @hi: upper bound
+ *
+ * Return: pivot index
+ */
+int partition(int *array, size_t size, int lo, int hi)
+{
+	int i, pivot, j;
+
+	for (i = lo - 1, j = lo, pivot = array[hi]; j < hi; j++)
+	{
+		if (array[j] < pivot && i++)
+			if (i != j)
+				swap(array, i, j, size);
+	}
+	if (i + 1 != hi)
+		swap(array, i + 1, hi, size);
+	return (i + 1);
 }
 /**
  * swap - swap two elements and print array
