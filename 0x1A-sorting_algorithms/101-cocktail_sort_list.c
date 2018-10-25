@@ -1,5 +1,45 @@
 #include "sort.h"
 void swap(listint_t **list, listint_t *p1, listint_t *p2);
+
+void cocktail_sort_list(listint_t **list)
+{
+	int swapped = 1;
+	listint_t *h = NULL, *t = NULL, *p = NULL;
+
+	if (!list || !*list || !(*list)->next)
+		return;
+	h = *list;
+	p = *list;
+	while (swapped)
+	{
+		swapped = 0;
+		while (p->next || t == p)
+		{
+			if (p->n > p->next->n)
+			{
+ 				swap(list, p, p->next);
+				swapped = 1;
+			}
+			p = p->next;
+		}
+		if (t == NULL)
+			t = p;
+		else
+			t = p->prev;
+		p = t;
+		while (p != h)
+		{
+			if (p->n < p->prev->n)
+			{
+				swap(list, p->prev, p);
+				swapped = 1;
+			}
+			p = p->prev;
+		}
+		h = h->next;
+	}
+}
+
 /**
  * swap_node - swap adjacent two nodes from a doubly linked list
  * @list: linked list
@@ -19,4 +59,5 @@ void swap(listint_t **list, listint_t *p1, listint_t *p2)
 	p2->next = p1;
 	if (!p2->prev)
 		*list = p2;
+	print_list((const listint_t *) *list);
 }
