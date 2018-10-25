@@ -20,7 +20,7 @@ void cocktail_sort_list(listint_t **list)
 		{
 			if (p->n > p->next->n)
 			{
- 				swap(list, p, p->next);
+				swap(list, p, p->next);
 				swapped = 1;
 				p = p->prev;
 			}
