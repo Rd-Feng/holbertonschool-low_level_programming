@@ -12,13 +12,15 @@ void cocktail_sort_list(listint_t **list)
 	p = *list;
 	while (swapped)
 	{
+
 		swapped = 0;
-		while (p->next || t == p)
+		while (p->next && t != p)
 		{
 			if (p->n > p->next->n)
 			{
  				swap(list, p, p->next);
 				swapped = 1;
+				p = p->prev;
 			}
 			p = p->next;
 		}
@@ -27,15 +29,17 @@ void cocktail_sort_list(listint_t **list)
 		else
 			t = p->prev;
 		p = t;
-		while (p != h)
+		while (p->prev && p != h)
 		{
 			if (p->n < p->prev->n)
 			{
 				swap(list, p->prev, p);
 				swapped = 1;
+				p = p->next;
 			}
 			p = p->prev;
 		}
+
 		h = h->next;
 	}
 }
