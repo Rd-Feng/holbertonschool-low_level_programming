@@ -1,6 +1,9 @@
 #include "sort.h"
 void swap(listint_t **list, listint_t *p1, listint_t *p2);
-
+/**
+ * cocktail_sort_list - cock tail sort on linked list
+ * @list: list
+ */
 void cocktail_sort_list(listint_t **list)
 {
 	int swapped = 1;
@@ -12,9 +15,8 @@ void cocktail_sort_list(listint_t **list)
 	p = *list;
 	while (swapped)
 	{
-
 		swapped = 0;
-		while (p->next && t != p)
+		while (p->next && p != t)
 		{
 			if (p->n > p->next->n)
 			{
@@ -43,7 +45,6 @@ void cocktail_sort_list(listint_t **list)
 		h = h->next;
 	}
 }
-
 /**
  * swap_node - swap adjacent two nodes from a doubly linked list
  * @list: linked list
