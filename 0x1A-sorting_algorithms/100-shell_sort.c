@@ -2,8 +2,9 @@
 int gap(size_t size);
 void sort_sublist(int *array, int gap, size_t size, int lo);
 /**
- * shell_sort - shell sort using Knuth sequence
- * @array: array
+ * shell_sort - sorts an array of integers in ascending order using the
+ * Shell sort algorithm
+ * @array: unsorted array that need to sort
  * @size: size of array
  */
 void shell_sort(int *array, size_t size)
