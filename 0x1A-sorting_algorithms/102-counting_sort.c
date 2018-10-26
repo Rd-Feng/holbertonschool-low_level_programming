@@ -1,7 +1,11 @@
 #include "sort.h"
 size_t _max(int *array, size_t size);
 int *setup_count_array(int *array, size_t size, size_t k);
-
+/**
+ * counting_sort - counting sort on array
+ * @array: array
+ * @size: size of array
+ */
 void counting_sort(int *array, size_t size)
 {
 	int *count_array = NULL, *tmp = NULL;
@@ -12,18 +16,21 @@ void counting_sort(int *array, size_t size)
 		return;
 	for (i = 0; i < size; i++)
 		tmp[i] = array[i];
-
 	k = _max(array, size);
 	count_array = setup_count_array(array, size, k);
 	for (i = 0; i < size; i++)
-	{
-		array[count_array[tmp[i]]--] = tmp[i];
-		print_array(array, size);
-	}
+		array[--count_array[tmp[i]]] = tmp[i];
 	free(tmp);
 	free(count_array);
 }
-
+/**
+ * setup_count_array - setup the count array for counting sort
+ * @array: origin array
+ * @size: size of origin array
+ * @k: largest num in array
+ *
+ * Return: pointer to count array
+ */
 int *setup_count_array(int *array, size_t size, size_t k)
 {
 	int *countArray = NULL;

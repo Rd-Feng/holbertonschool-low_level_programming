@@ -46,7 +46,7 @@ void cocktail_sort_list(listint_t **list)
 	}
 }
 /**
- * swap_node - swap adjacent two nodes from a doubly linked list
+ * swap - swap adjacent two nodes from a doubly linked list
  * @list: linked list
  * @p1: node 1
  * @p2: node 2
