@@ -1,6 +1,6 @@
 #include "sort.h"
-int gap(size_t size);
-void sort_sublist(int *array, int gap, size_t size, int lo);
+size_t gap(size_t size);
+void sort_sublist(int *array, size_t gap, size_t size, size_t lo);
 /**
  * shell_sort - sorts an array of integers in ascending order using the
  * Shell sort algorithm
@@ -9,14 +9,13 @@ void sort_sublist(int *array, int gap, size_t size, int lo);
  */
 void shell_sort(int *array, size_t size)
 {
-	int gaps, low;
+	size_t gaps, low;
 
 	gaps = gap(size);
 	for (; gaps > 0; gaps = (gaps - 1) / 3)
 	{
 		for (low = 0; low < gaps; low++)
 			sort_sublist(array, gaps, size, low);
-		print_array(array, size);
 	}
 
 }
@@ -27,14 +26,16 @@ void shell_sort(int *array, size_t size)
  * @size: size of array
  * @lo: lo index
  */
-void sort_sublist(int *array, int gap, size_t size, int lo)
+void sort_sublist(int *array, size_t gap, size_t size, size_t lo)
 {
-	int p, tmp, next_cand, next_p;
-	size_t cand;
+	int tmp;
+	size_t cand, p, next_cand, next_p;
 
 	for (cand = gap + lo; cand < size; cand = next_cand)
 	{
+
 		next_cand = cand + gap;
+
 		for (p = cand - gap; p >= lo; p = next_p)
 		{
 			next_p = p - gap;
@@ -53,7 +54,7 @@ void sort_sublist(int *array, int gap, size_t size, int lo)
  * @size: size of array
  * Return: return the number of gap
  */
-int gap(size_t size)
+size_t gap(size_t size)
 {
 	size_t n = 1;
 
