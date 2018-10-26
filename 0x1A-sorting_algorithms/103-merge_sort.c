@@ -63,11 +63,9 @@ void merge(int *array, int *tmp, int llo, int lhi, int rlo, int rhi)
 	while (llo <= lhi)
 		tmp[i++] = array[llo++];
 	while (rlo <= rhi)
-		tmp[i++] = array[llo++];
+		tmp[i++] = array[rlo++];
 	for (i = lhead; i <= rhi; i++)
 		array[i] = tmp[i];
 	printf("[Done]: ");
-	print_array(array + rhead, lsize + rsize);
+	print_array(array + lhead, lsize + rsize);
 }
-
-
