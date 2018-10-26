@@ -29,9 +29,8 @@ void helper(int *array, int *tmp, int lo, int hi)
 	{
 		helper(array, tmp, lo, (lo + hi + 1) / 2 - 1);
 		helper(array, tmp, (lo + hi + 1) / 2, hi);
-		merge(lo, (lo + hi + 1) / 2 - 1,
-		      (lo + hi + 1) / 2, hi,
-		      array, tmp);
+		merge(array, tmp, lo, (lo + hi + 1) / 2 - 1,
+		      (lo + hi + 1) / 2, hi);
 	}
 }
 /**
@@ -51,9 +50,9 @@ void merge(int *array, int *tmp, int llo, int lhi, int rlo, int rhi)
 
 	printf("Merging...\n");
 	printf("[left]: ");
-	print_sublist(array + lhead, lsize);
+	print_array(array + lhead, lsize);
 	printf("[right]: ");
-	print_sublist(array + rhead, rsize);
+	print_array(array + rhead, rsize);
 	while (llo <= lhi && rlo <= rhi)
 	{
 		if (array[llo] <= array[rlo])
@@ -68,5 +67,5 @@ void merge(int *array, int *tmp, int llo, int lhi, int rlo, int rhi)
 	for (i = lhead; i <= rhi; i++)
 		array[i] = tmp[i];
 	printf("[Done]: ");
-	print_sublist(array + rhead, lsize + rsize);
+	print_array(array + rhead, lsize + rsize);
 }
