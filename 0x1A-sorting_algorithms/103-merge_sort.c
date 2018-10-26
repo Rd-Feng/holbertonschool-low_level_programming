@@ -47,6 +47,26 @@ void merge(int *array, int *tmp, int llo, int lhi, int rlo, int rhi)
 {
 	int lhead = llo, lsize = lhi - llo + 1;
 	int rhead = rlo, rsize = rhi - rlo + 1;
+	int i = llo;
 
-	
+	printf("Merging...\n");
+	printf("[left]: ");
+	print_sublist(array + lhead, lsize);
+	printf("[right]: ");
+	print_sublist(array + rhead, rsize);
+	while (llo <= lhi && rlo <= rhi)
+	{
+		if (array[llo] <= array[rlo])
+			tmp[i++] = array[llo++];
+		else
+			tmp[i++] = array[rlo++];
+	}
+	while (llo <= lhi)
+		tmp[i++] = array[llo++];
+	while (rlo <= rhi)
+		tmp[i++] = array[llo++];
+	for (i = lhead; i <= rhi; i++)
+		array[i] = tmp[i];
+	printf("[Done]: ");
+	print_sublist(array + rhead, lsize + rsize);
 }
