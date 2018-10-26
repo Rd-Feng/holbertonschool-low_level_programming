@@ -28,8 +28,9 @@ void shell_sort(int *array, size_t size)
  */
 void sort_sublist(int *array, size_t gap, size_t size, size_t lo)
 {
+	size_t p, next_cand, next_p;
 	int tmp;
-	size_t cand, p, next_cand, next_p;
+	size_t cand;
 
 	for (cand = gap + lo; cand < size; cand = next_cand)
 	{
@@ -46,6 +47,8 @@ void sort_sublist(int *array, size_t gap, size_t size, size_t lo)
 				array[cand] = tmp;
 				cand = p;
 			}
+			if (gap > p)
+				break;
 		}
 	}
 }
