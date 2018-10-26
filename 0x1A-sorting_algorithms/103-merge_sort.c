@@ -1,6 +1,6 @@
 #include "sort.h"
-void helper(int *array, int *tmp, int lo, int hi);
-void merge(int *array, int *tmp, int llo, int lhi, int rlo, int rhi);
+void helper(int *array, int *tmp, size_t lo, size_t hi);
+void merge(int *a, int *tmp, size_t llo, size_t lhi, size_t rlo, size_t rhi);
 /**
  * merge_sort - merge_sort on an array
  * @array: array
@@ -22,7 +22,7 @@ void merge_sort(int *array, size_t size)
  * @lo: low index of sub array
  * @hi: high index of sub array
  */
-void helper(int *array, int *tmp, int lo, int hi)
+void helper(int *array, int *tmp, size_t lo, size_t hi)
 {
 	if (hi > lo)
 	{
@@ -34,37 +34,37 @@ void helper(int *array, int *tmp, int lo, int hi)
 }
 /**
  * merge - merge two sub list
- * @array: array
+ * @a: array
  * @tmp: buffer
  * @llo: low index of left sub list
  * @lhi: high index of left sub list
  * @rlo: low index of right sub list
  * @rhi: high index of right sub list
  */
-void merge(int *array, int *tmp, int llo, int lhi, int rlo, int rhi)
+void merge(int *a, int *tmp, size_t llo, size_t lhi, size_t rlo, size_t rhi)
 {
-	int lhead = llo, lsize = lhi - llo + 1;
-	int rhead = rlo, rsize = rhi - rlo + 1;
-	int i = llo;
+	size_t lhead = llo, lsize = lhi - llo + 1;
+	size_t rhead = rlo, rsize = rhi - rlo + 1;
+	size_t i = llo;
 
 	printf("Merging...\n");
 	printf("[left]: ");
-	print_array(array + lhead, lsize);
+	print_array(a + lhead, lsize);
 	printf("[right]: ");
-	print_array(array + rhead, rsize);
+	print_array(a + rhead, rsize);
 	while (llo <= lhi && rlo <= rhi)
 	{
-		if (array[llo] <= array[rlo])
-			tmp[i++] = array[llo++];
+		if (a[llo] <= a[rlo])
+			tmp[i++] = a[llo++];
 		else
-			tmp[i++] = array[rlo++];
+			tmp[i++] = a[rlo++];
 	}
 	while (llo <= lhi)
-		tmp[i++] = array[llo++];
+		tmp[i++] = a[llo++];
 	while (rlo <= rhi)
-		tmp[i++] = array[rlo++];
+		tmp[i++] = a[rlo++];
 	for (i = lhead; i <= rhi; i++)
-		array[i] = tmp[i];
+		a[i] = tmp[i];
 	printf("[Done]: ");
-	print_array(array + lhead, lsize + rsize);
+	print_array(a + lhead, lsize + rsize);
 }
