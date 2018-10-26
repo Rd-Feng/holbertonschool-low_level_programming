@@ -16,7 +16,10 @@ void counting_sort(int *array, size_t size)
 	k = _max(array, size);
 	count_array = setup_count_array(array, size, k);
 	for (i = 0; i < size; i++)
+	{
 		array[count_array[tmp[i]]--] = tmp[i];
+		print_array(array, size);
+	}
 	free(tmp);
 	free(count_array);
 }
