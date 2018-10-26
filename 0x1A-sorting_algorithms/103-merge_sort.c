@@ -1,7 +1,6 @@
 #include "sort.h"
 void helper(int *array, int *tmp, int lo, int hi);
 void merge(int *array, int *tmp, int llo, int lhi, int rlo, int rhi);
-void print_sublist(int *arr, int size);
 /**
  * merge_sort - merge_sort on an array
  * @array: array
