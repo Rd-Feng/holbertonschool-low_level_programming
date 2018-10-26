@@ -29,9 +29,8 @@ void helper(int *array, int *tmp, int lo, int hi)
 	{
 		helper(array, tmp, lo, (lo + hi + 1) / 2 - 1);
 		helper(array, tmp, (lo + hi + 1) / 2, hi);
-		merge(lo, (lo + hi + 1) / 2 - 1,
-		      (lo + hi + 1) / 2, hi,
-		      array, tmp);
+		merge(array, tmp, lo, (lo + hi + 1) / 2 - 1,
+		      (lo + hi + 1) / 2, hi);
 	}
 }
 /**
@@ -47,8 +46,28 @@ void merge(int *array, int *tmp, int llo, int lhi, int rlo, int rhi)
 {
 	int lhead = llo, lsize = lhi - llo + 1;
 	int rhead = rlo, rsize = rhi - rlo + 1;
+	int i = llo;
 
-	
+	printf("Merging...\n");
+	printf("[left]: ");
+	print_array(array + lhead, lsize);
+	printf("[right]: ");
+	print_array(array + rhead, rsize);
+	while (llo <= lhi && rlo <= rhi)
+	{
+		if (array[llo] <= array[rlo])
+			tmp[i++] = array[llo++];
+		else
+			tmp[i++] = array[rlo++];
+	}
+	while (llo <= lhi)
+		tmp[i++] = array[llo++];
+	while (rlo <= rhi)
+		tmp[i++] = array[llo++];
+	for (i = lhead; i <= rhi; i++)
+		array[i] = tmp[i];
+	printf("[Done]: ");
+	print_array(array + rhead, lsize + rsize);
 }
 
 
