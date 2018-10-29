@@ -9,6 +9,8 @@ size_t partition(int *array, size_t size, size_t lo, size_t hi);
  */
 void quick_sort(int *array, size_t size)
 {
+	if (array == NULL || size < 2)
+		return;
 	helper(array, size, 0, size - 1);
 }
 /**
