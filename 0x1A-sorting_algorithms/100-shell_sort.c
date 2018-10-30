@@ -14,10 +14,12 @@ void shell_sort(int *array, size_t size)
 	if (!array || size < 2)
 		return;
 	gaps = gap(size);
-	for (; gaps > 0; print_array(array, size), gaps = (gaps - 1) / 3)
+	while (gaps > 0)
 	{
 		for (low = 0; low < gaps; low++)
 			sort_sublist(array, gaps, size, low);
+		print_array(array, size);
+		gaps = (gaps - 1) / 3;
 	}
 
 }
