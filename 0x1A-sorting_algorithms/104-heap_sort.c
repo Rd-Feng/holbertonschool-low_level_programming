@@ -87,8 +87,11 @@ void swap(int *array, size_t size, size_t e1, size_t e2)
 {
 	int tmp;
 
-	tmp = array[e1];
-	array[e1] = array[e2];
-	array[e2] = tmp;
-	print_array(array, size);
+	if (e1 != e2 && array[e1] != array[e2])
+	{
+		tmp = array[e1];
+		array[e1] = array[e2];
+		array[e2] = tmp;
+		print_array(array, size);
+	}
 }
