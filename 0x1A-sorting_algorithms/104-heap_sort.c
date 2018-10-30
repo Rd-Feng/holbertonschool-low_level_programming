@@ -17,7 +17,6 @@ void heap_sort(int *array, size_t size)
 	while (heap_size > 1)
 	{
 		swap(array, size, 0, heap_size - 1);
-		print_array(array, size);
 		heap_size--;
 		siftdown(array, size, heap_size);
 	}
@@ -87,7 +86,6 @@ void siftdown(int *array, size_t size, size_t heap_size)
 void swap(int *array, size_t size, size_t e1, size_t e2)
 {
 	int tmp;
-	(void) size;
 
 	tmp = array[e1];
 	array[e1] = array[e2];
