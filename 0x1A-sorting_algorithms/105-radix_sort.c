@@ -47,13 +47,10 @@ void _counting_sort(int *array, size_t size, int ex)
 	printf("af max\n");
 	printf("b4 countarrray\n");
 	count_array = setup_count_array(array, size, k, ex);
-	printf("af countarrray\n");
 	for (factor = 1; ex > 0; factor *= 10, ex--)
 		;
 	for (i = 0; i < size; i++)
-	{
 		array[--count_array[tmp[i] / factor % 10]] = tmp[i];
-	}
 	free(tmp);
 	free(count_array);
 }
@@ -72,14 +69,14 @@ int *setup_count_array(int *array, size_t size, size_t k, int ex)
 	int d = 0, factor = 1, j;
 
 	countArray = malloc(sizeof(int) * (k + 1));
-	for (j = 0;  j < ex; factor *= 10, j++)
+	for (j = 0; j < ex; factor *= 10, j++)
 		;
 	printf("factor %d\n", factor);
 	if (!countArray)
 		return (NULL);
 	for (i = 0; i < k + 1; i++)
 		countArray[i] = 0;
-	for (i = 0; i < size; i++)
+	for (i = 0, d = 0; i < size; i++, d = 0)
 	{
 		if (array[i] >= factor)
 		{
