@@ -14,7 +14,7 @@ void shell_sort(int *array, size_t size)
 	if (!array)
 		return;
 	gaps = gap(size);
-	for (; gaps > 0; gaps = (gaps - 1) / 3)
+	for (; gaps > 0; print_array(array, size), gaps = (gaps - 1) / 3)
 	{
 		for (low = 0; low < gaps; low++)
 			sort_sublist(array, gaps, size, low);
