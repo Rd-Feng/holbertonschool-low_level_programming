@@ -65,7 +65,7 @@ size_t gap(size_t size)
 {
 	size_t n = 1;
 
-	while (n < size)
+	while (n <= size)
 		n = n * 3 - 1;
 	return ((n - 1) / 3);
 }
