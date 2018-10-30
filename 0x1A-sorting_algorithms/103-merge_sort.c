@@ -17,6 +17,7 @@ void merge_sort(int *array, size_t size)
 		return;
 	if (size > 1)
 		helper(array, tmp, 0, size - 1);
+	free(tmp);
 }
 /**
  * helper - merge sort helper
