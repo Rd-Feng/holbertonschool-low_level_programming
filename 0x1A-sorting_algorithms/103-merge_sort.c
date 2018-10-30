@@ -8,8 +8,11 @@ void merge(int *a, int *tmp, size_t llo, size_t lhi, size_t rlo, size_t rhi);
  */
 void merge_sort(int *array, size_t size)
 {
-	int *tmp = malloc(sizeof(int) * size);
+	int *tmp = NULL;
 
+	if (!array || size < 2)
+		return;
+	tmp = malloc(sizeof(int) * size);
 	if (!tmp)
 		return;
 	if (size > 1)
