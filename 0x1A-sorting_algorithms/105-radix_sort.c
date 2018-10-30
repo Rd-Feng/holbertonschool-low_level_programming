@@ -74,7 +74,6 @@ int *setup_count_array(int *array, size_t size, size_t k, int ex)
 			d = array[i]/ factor % 10;
 		countArray[d] += 1;
 	}
-	print_array(countArray, size);
 	for (i = 0; i < k; i++)
 		countArray[i + 1] = countArray[i] + countArray[i + 1];
 	return (countArray);
