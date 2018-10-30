@@ -48,11 +48,14 @@ size_t partition(int *array, size_t size, size_t lo, size_t hi)
 
 	for (i = lo, j = lo, pivot = array[hi]; j < hi; j++)
 	{
-		if (array[j] < pivot && i++)
-			if (i - 1 != j)
-				swap(array, i - 1, j, size);
+		if (array[j] < pivot)
+		{
+			if (i != j)
+				swap(array, i, j, size);
+			i++;
+		}
 	}
-	if (i != hi)
+	if (i != hi && array[i] != array[hi])
 		swap(array, i, hi, size);
 	return (i);
 }
