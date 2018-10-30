@@ -46,7 +46,6 @@ size_t partition(int *array, size_t size, size_t lo, size_t hi)
 	int pivot;
 	size_t i, j;
 
-	printf("lo %lu, hi %lu\n", lo, hi);
 	for (i = lo, j = lo, pivot = array[hi]; j < hi; j++)
 	{
 		if (array[j] < pivot)

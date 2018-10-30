@@ -1,6 +1,26 @@
 #include "sort.h"
-size_t _max(int *array, size_t size);
-int *setup_count_array(int *array, size_t size, size_t k);
+size_t _max(int *array, size_t size, int ex);
+int *setup_count_array(int *array, size_t size, size_t k, int ex);
+void counting_sort(int *array, size_t size, int ex);
+/**
+ * radix_sort - radix sort on array
+ * @array: array
+ * @size: size of array
+ */
+void radix_sort(int *array, size_t size)
+{
+	int max_num, max_ex, tmp;
+
+	if (!array || size < 2)
+		return;
+	for (tmp = 0, max_num = array[0]; tmp < size; tmp++)
+		if (array[i] > max_num)
+			max_num = array[i];
+	for (tmp = max_num, max_ex = 0; tmp > 10; max_ex++)
+		tmp /= 10;
+	for (tmp = 0; tmp <= max_ex; tmp++)
+		counting_sort(array, size, tmp);
+}
 /**
  * counting_sort - counting sort on array
  * @array: array
@@ -53,22 +73,25 @@ int *setup_count_array(int *array, size_t size, size_t k, int ex);
 		countArray[i + 1] = countArray[i] + countArray[i + 1];
 	return (countArray);
 }
-/*
- * _max - find the largest value of an array
+/**
+ * _max - find the largest value based on the ex-th significent digit
  * @array: array
  * @size: size of array
+ * @ex: exponent
  * Return: return the largest value
  */
-size_t _max(int *array, size_t size)
+size_t _max(int *array, size_t size, int ex)
 {
 	size_t i;
-	int max;
+	int max, factor;
 
-	max = array[0];
+	for (factor = 1; ex > 0; factor *= 10)
+		;
+	max = array[0] / factor % 10;
 	for (i = 0; i < size; i++)
 	{
-		if (array[i] > max)
-			max = array[i];
+		if (array[i] / factor % 10 > max)
+			max = array[i] / factor % 10;
 	}
 	return (max);
 }
