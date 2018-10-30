@@ -10,7 +10,9 @@ void counting_sort(int *array, size_t size)
 {
 	int *count_array = NULL, *tmp = NULL;
 	size_t i, k;
-	/* make a copy of origin array */
+
+	if (!array || size < 2)
+		return;
 	tmp = malloc(sizeof(int) * size);
 	if (!tmp)
 		return;
