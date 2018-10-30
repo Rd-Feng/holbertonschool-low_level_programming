@@ -11,13 +11,15 @@ void shell_sort(int *array, size_t size)
 {
 	size_t gaps, low;
 
-	if (!array)
+	if (!array || size < 2)
 		return;
 	gaps = gap(size);
-	for (; gaps > 0; print_array(array, size), gaps = (gaps - 1) / 3)
+	while (gaps > 0)
 	{
 		for (low = 0; low < gaps; low++)
 			sort_sublist(array, gaps, size, low);
+		print_array(array, size);
+		gaps = (gaps - 1) / 3;
 	}
 
 }
@@ -63,7 +65,7 @@ size_t gap(size_t size)
 {
 	size_t n = 1;
 
-	while (n < size)
+	while (n <= size)
 		n = n * 3 - 1;
 	return ((n - 1) / 3);
 }
