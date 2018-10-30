@@ -50,7 +50,9 @@ void _counting_sort(int *array, size_t size, int ex)
 	for (factor = 1; ex > 0; factor *= 10, ex--)
 		;
 	for (i = 0; i < size; i++)
+	{ p = 0 
 		array[--count_array[tmp[i] / factor % 10]] = tmp[i];
+	}
 	free(tmp);
 	free(count_array);
 }
