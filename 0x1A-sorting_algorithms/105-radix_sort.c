@@ -19,7 +19,7 @@ void radix_sort(int *array, size_t size)
 			max_num = array[i];
 	for (n = max_num, max_ex = 0; n > 10; max_ex++)
 		n /= 10;
-	for (n = 0; n <= max_ex; n++)
+	for (n = 0; n <= max_ex; n++, print_array(array, size))
 		_counting_sort(array, size, n);
 }
 /**
@@ -31,10 +31,8 @@ void radix_sort(int *array, size_t size)
 void _counting_sort(int *array, size_t size, int ex)
 {
 	int *count_array = NULL, *tmp = NULL;
-	size_t i, k;
+	size_t i, k, factor;
 
-	if (!array || size < 2)
-		return;
 	tmp = malloc(sizeof(int) * size);
 	if (!tmp)
 		return;
@@ -42,8 +40,10 @@ void _counting_sort(int *array, size_t size, int ex)
 		tmp[i] = array[i];
 	k = _max(array, size, ex);
 	count_array = setup_count_array(array, size, k, ex);
+	for (factor = 1; ex > 0; factor *= 10, ex--)
+		;
 	for (i = 0; i < size; i++)
-		array[--count_array[tmp[i]]] = tmp[i];
+		array[--count_array[tmp[i] / factor % 10]] = tmp[i];
 	free(tmp);
 	free(count_array);
 }
@@ -62,13 +62,13 @@ int *setup_count_array(int *array, size_t size, size_t k, int ex)
 	int d = 0, factor = 1, j;
 
 	countArray = malloc(sizeof(int) * (k + 1));
-	for (j = 0; j <= ex; factor *= 10)
+	for (j = 0; j < ex; factor *= 10, j++)
 		;
 	if (!countArray)
 		return (NULL);
 	for (i = 0; i < k + 1; i++)
 		countArray[i] = 0;
-	for (i = 0; i < size; i++)
+	for (i = 0, d = 0; i < size; i++, d = 0)
 	{
 		if (array[i] >= factor)
 			d = array[i]/ factor % 10;
@@ -87,10 +87,9 @@ int *setup_count_array(int *array, size_t size, size_t k, int ex)
  */
 size_t _max(int *array, size_t size, int ex)
 {
-	size_t i;
-	int max, factor;
+	size_t i, max, factor;
 
-	for (factor = 1; ex > 0; factor *= 10)
+	for (factor = 1; ex > 0; factor *= 10, ex--)
 		;
 	max = array[0] / factor % 10;
 	for (i = 0; i < size; i++)
