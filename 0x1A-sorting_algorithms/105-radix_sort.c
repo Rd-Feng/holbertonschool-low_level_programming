@@ -6,7 +6,7 @@ int *setup_count_array(int *array, size_t size, size_t k);
  * @array: array
  * @size: size of array
  */
-void counting_sort(int *array, size_t size)
+void counting_sort(int *array, size_t size, int ex)
 {
 	int *count_array = NULL, *tmp = NULL;
 	size_t i, k;
@@ -33,24 +33,27 @@ void counting_sort(int *array, size_t size)
  *
  * Return: pointer to count array
  */
-int *setup_count_array(int *array, size_t size, size_t k)
+int *setup_count_array(int *array, size_t size, size_t k, int ex);
 {
-	int *countArray = NULL;
-	size_t i;
+	int d = 0, factor = 1;
 
-	countArray = malloc(sizeof(int) * (k + 1));
+	countArray = malloc(sizeof(int) * (max_digit + 1));
+	for (i = 0; i <= ex; factor *= 10)
+		;
 	if (!countArray)
 		return (NULL);
 	for (i = 0; i < k + 1; i++)
 		countArray[i] = 0;
 	for (i = 0; i < size; i++)
-		countArray[array[i]] += 1;
+	{
+		if (array[i] >= factor) 
+			countArray[array[i]/ factor % 10] += 1;
+	}
 	for (i = 0; i < k; i++)
 		countArray[i + 1] = countArray[i] + countArray[i + 1];
-	print_array(countArray, k + 1);
 	return (countArray);
 }
-/**
+/*
  * _max - find the largest value of an array
  * @array: array
  * @size: size of array
