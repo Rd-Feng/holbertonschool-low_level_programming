@@ -42,8 +42,8 @@ void _counting_sort(int *array, size_t size, int ex)
 	count_array = setup_count_array(array, size, k, ex);
 	for (factor = 1; ex > 0; factor *= 10, ex--)
 		;
-	for (i = 0; i < size; i++)
-		array[--count_array[tmp[i] / factor % 10]] = tmp[i];
+	for (i = size; i > 0; i--)
+		array[--count_array[tmp[i - 1] / factor % 10]] = tmp[i - 1];
 	free(tmp);
 	free(count_array);
 }
