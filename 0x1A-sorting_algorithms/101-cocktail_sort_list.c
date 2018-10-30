@@ -40,7 +40,7 @@ void cocktail_sort_list(listint_t **list)
 			if (p->n < p->prev->n)
 			{
 				if (p == t)
-                                        t = p->prev;
+					t = p->prev;
 				if (p->prev == h)
 					h = p;
 				swap(list, p->prev, p);
