@@ -22,6 +22,8 @@ void cocktail_sort_list(listint_t **list)
 			{
 				if (p == h)
 					h = p->next;
+				if (p->next == t)
+					t = p;
 				swap(list, p, p->next);
 				swapped = 1;
 				p = p->prev;
@@ -37,9 +39,11 @@ void cocktail_sort_list(listint_t **list)
 		{
 			if (p->n < p->prev->n)
 			{
-				swap(list, p->prev, p);
 				if (p == t)
-					t = t->next;
+                                        t = p->prev;
+				if (p->prev == h)
+					h = p;
+				swap(list, p->prev, p);
 				swapped = 1;
 				p = p->next;
 			}
