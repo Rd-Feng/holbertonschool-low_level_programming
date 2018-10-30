@@ -46,11 +46,20 @@ size_t partition(int *array, size_t size, size_t lo, size_t hi)
 	int pivot;
 	size_t i, j;
 
+	printf("lo %lu, hi %lu\n", lo, hi);
 	for (i = lo, j = lo, pivot = array[hi]; j < hi; j++)
 	{
-		if (array[j] < pivot && i++)
+		printf("pivot = %d j = %d\n", array[hi], array[j]);
+		if (array[j] < pivot)
+		{	printf("wap\n");
 			if (i - 1 != j)
-				swap(array, i - 1, j, size);
+			{
+				printf("index %lu idx %lu\n", i, j);
+				swap(array, i, j, size);
+			}
+			i++;
+			
+		}
 	}
 	if (i != hi)
 		swap(array, i, hi, size);
