@@ -52,6 +52,7 @@ void _counting_sort(int *array, size_t size, int ex)
  * @array: origin array
  * @size: size of origin array
  * @k: largest num in array
+ * @ex: exponent
  *
  * Return: pointer to count array
  */
@@ -71,7 +72,7 @@ int *setup_count_array(int *array, size_t size, size_t k, int ex)
 	for (i = 0, d = 0; i < size; i++, d = 0)
 	{
 		if (array[i] >= factor)
-			d = array[i]/ factor % 10;
+			d = array[i] / factor % 10;
 		countArray[d] += 1;
 	}
 	for (i = 0; i < k; i++)
