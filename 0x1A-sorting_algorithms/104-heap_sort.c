@@ -1,5 +1,5 @@
 #include "sort.h"
-void heaplify(int *array, size_t size, size_t cur_idx);
+void heaplify(int *array, size_t size, size_t cur_idx, size_t s);
 void siftdown(int *array, size_t size, size_t heap_size);
 void swap(int *array, size_t size, size_t e1, size_t e2);
 /**
@@ -13,12 +13,13 @@ void heap_sort(int *array, size_t size)
 
 	if (!array || size < 2)
 		return;
-	heaplify(array, size, 0);
+	heaplify(array, size, 0, size);
 	while (heap_size > 1)
 	{
 		swap(array, size, 0, heap_size - 1);
 		heap_size--;
-		siftdown(array, size, heap_size);
+		/*siftdown(array, size, heap_size);*/
+		heaplify(array, heap_size, 0, size);
 	}
 }
 /**
@@ -26,17 +27,18 @@ void heap_sort(int *array, size_t size)
  * @array: array
  * @size: size
  * @cur_idx: root
+ * @s: array full size
  */
-void heaplify(int *array, size_t size, size_t cur_idx)
+void heaplify(int *array, size_t size, size_t cur_idx, size_t s)
 {
 	size_t l_idx = 2 * cur_idx + 1;
 	size_t r_idx = 2 * cur_idx + 2;
 	size_t max_idx = cur_idx;
 
 	if (l_idx < size)
-		heaplify(array, size, l_idx);
+		heaplify(array, size, l_idx, s);
 	if (r_idx < size)
-		heaplify(array, size, r_idx);
+		heaplify(array, size, r_idx, s);
 
 	if (l_idx < size && array[cur_idx] < array[l_idx])
 		max_idx = l_idx;
@@ -44,8 +46,8 @@ void heaplify(int *array, size_t size, size_t cur_idx)
 		max_idx = r_idx;
 	if (max_idx != cur_idx)
 	{
-		swap(array, size, cur_idx, max_idx);
-		heaplify(array, size, max_idx);
+		swap(array, s, cur_idx, max_idx);
+		heaplify(array, size, max_idx, s);
 	}
 }
 /**
