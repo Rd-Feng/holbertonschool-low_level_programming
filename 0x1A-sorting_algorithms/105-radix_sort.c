@@ -1,7 +1,7 @@
 #include "sort.h"
 size_t _max(int *array, size_t size, int ex);
 int *setup_count_array(int *array, size_t size, size_t k, int ex);
-void counting_sort(int *array, size_t size, int ex);
+void _counting_sort(int *array, size_t size, int ex);
 /**
  * radix_sort - radix sort on array
  * @array: array
@@ -9,24 +9,26 @@ void counting_sort(int *array, size_t size, int ex);
  */
 void radix_sort(int *array, size_t size)
 {
-	int max_num, max_ex, tmp;
+	int max_num, max_ex, n;
+	size_t i;
 
 	if (!array || size < 2)
 		return;
-	for (tmp = 0, max_num = array[0]; tmp < size; tmp++)
+	for (i = 0, max_num = array[0]; i < size; i++)
 		if (array[i] > max_num)
 			max_num = array[i];
-	for (tmp = max_num, max_ex = 0; tmp > 10; max_ex++)
-		tmp /= 10;
-	for (tmp = 0; tmp <= max_ex; tmp++)
-		counting_sort(array, size, tmp);
+	for (n = max_num, max_ex = 0; n > 10; max_ex++)
+		n /= 10;
+	for (n = 0; n <= max_ex; n++)
+		_counting_sort(array, size, n);
 }
 /**
- * counting_sort - counting sort on array
+ * _counting_sort - counting sort on array
  * @array: array
  * @size: size of array
+ * @ex: exponent
  */
-void counting_sort(int *array, size_t size, int ex)
+void _counting_sort(int *array, size_t size, int ex)
 {
 	int *count_array = NULL, *tmp = NULL;
 	size_t i, k;
@@ -38,8 +40,8 @@ void counting_sort(int *array, size_t size, int ex)
 		return;
 	for (i = 0; i < size; i++)
 		tmp[i] = array[i];
-	k = _max(array, size);
-	count_array = setup_count_array(array, size, k);
+	k = _max(array, size, ex);
+	count_array = setup_count_array(array, size, k, ex);
 	for (i = 0; i < size; i++)
 		array[--count_array[tmp[i]]] = tmp[i];
 	free(tmp);
@@ -53,12 +55,14 @@ void counting_sort(int *array, size_t size, int ex)
  *
  * Return: pointer to count array
  */
-int *setup_count_array(int *array, size_t size, size_t k, int ex);
+int *setup_count_array(int *array, size_t size, size_t k, int ex)
 {
-	int d = 0, factor = 1;
+	int *countArray = NULL;
+	size_t i;
+	int d = 0, factor = 1, j;
 
-	countArray = malloc(sizeof(int) * (max_digit + 1));
-	for (i = 0; i <= ex; factor *= 10)
+	countArray = malloc(sizeof(int) * (k + 1));
+	for (j = 0; j <= ex; factor *= 10)
 		;
 	if (!countArray)
 		return (NULL);
@@ -66,8 +70,9 @@ int *setup_count_array(int *array, size_t size, size_t k, int ex);
 		countArray[i] = 0;
 	for (i = 0; i < size; i++)
 	{
-		if (array[i] >= factor) 
-			countArray[array[i]/ factor % 10] += 1;
+		if (array[i] >= factor)
+			d = array[i]/ factor % 10;
+		countArray[d] += 1;
 	}
 	for (i = 0; i < k; i++)
 		countArray[i + 1] = countArray[i] + countArray[i + 1];
