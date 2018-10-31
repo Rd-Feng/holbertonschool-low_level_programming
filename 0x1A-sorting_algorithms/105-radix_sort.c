@@ -17,7 +17,7 @@ void radix_sort(int *array, size_t size)
 	for (i = 0, max_num = array[0]; i < size; i++)
 		if (array[i] > max_num)
 			max_num = array[i];
-	for (n = max_num, max_ex = 0; n > 10; max_ex++)
+	for (n = max_num, max_ex = 0; n >= 10; max_ex++)
 		n /= 10;
 	for (n = 0; n <= max_ex; n++, print_array(array, size))
 		_counting_sort(array, size, n);
