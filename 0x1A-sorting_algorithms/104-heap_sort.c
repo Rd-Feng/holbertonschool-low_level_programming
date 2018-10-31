@@ -40,9 +40,9 @@ void heaplify(int *array, size_t size, size_t cur_idx, size_t s)
 	if (r_idx < size)
 		heaplify(array, size, r_idx, s);
 
-	if (l_idx < size && array[cur_idx] < array[l_idx])
+	if (l_idx < size && array[cur_idx] <= array[l_idx])
 		max_idx = l_idx;
-	if (r_idx < size && array[max_idx] < array[r_idx])
+	if (r_idx < size && array[max_idx] <= array[r_idx])
 		max_idx = r_idx;
 	if (max_idx != cur_idx)
 	{
