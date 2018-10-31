@@ -22,6 +22,15 @@ void bitonic_sort(int *array, size_t size)
  */
 void bs_helper(int *array, size_t size, size_t subsize, size_t idx, int dir)
 {
+	size_t sub = subsize / 2;
+
+	if (subsize > 1)
+	{
+		printf("Merging [%d/%d] (%s):\n", subsize, size, dir ? "UP" : "DOWN");
+		bs_helper(array, size, sub, idx, up);
+		bs_helper(array, size, sub, idx + sub, down);
+		bs_merge(array, size, subsize, idx, dir);
+	}
 }
 /**
  * bs_merge - bs merger
