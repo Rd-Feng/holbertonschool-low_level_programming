@@ -11,6 +11,7 @@ void cmpswap(int *array, size_t i, size_t j, int dir);
  */
 void bitonic_sort(int *array, size_t size)
 {
+	bs_helper(array, size, size, 0, up);
 }
 /**
  * bs_helper - bitonic sort helper
@@ -42,6 +43,14 @@ void bs_helper(int *array, size_t size, size_t subsize, size_t idx, int dir)
  */
 void bs_merge(int *array, size_t size, size_t subsize, size_t idx, int dir)
 {
+	size_t gap, i;
+
+	for (gap = subsize / 2; gap > 0; gap--)
+		for (i = idx; i < subsize - gap; i++)
+			cmpswap(array, i, i + gap, dir);
+	printf("Result [%lu/%lu] (%s):\n",
+	       subsize, size, dir == up ? "UP" : "DOWN");
+	print_array(array + idx, subsize);
 }
 /**
  * cmpswap - compare and swap
@@ -52,4 +61,12 @@ void bs_merge(int *array, size_t size, size_t subsize, size_t idx, int dir)
  */
 void cmpswap(int *array, size_t i, size_t j, int dir)
 {
+	int tmp;
+
+	if (dir == (array[i] > array[j]))
+	{
+		tmp = array[i];
+		array[i] = array[j];
+		array[j] = tmp;
+	}
 }
