@@ -29,6 +29,7 @@ void bs_helper(int *array, size_t size, size_t subsize, size_t idx, int dir)
 	{
 		printf("Merging [%lu/%lu] (%s):\n",
 		       subsize, size, dir ? "UP" : "DOWN");
+		print_array(array + idx, subsize);
 		bs_helper(array, size, sub, idx, up);
 		bs_helper(array, size, sub, idx + sub, down);
 		bs_merge(array, size, subsize, idx, dir);
