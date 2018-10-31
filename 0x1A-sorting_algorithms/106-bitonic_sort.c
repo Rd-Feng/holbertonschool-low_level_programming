@@ -48,7 +48,7 @@ void bs_merge(int *array, size_t size, size_t subsize, size_t idx, int dir)
 	size_t gap, i;
 
 	for (gap = subsize / 2; gap > 0; gap--)
-		for (i = idx; i < subsize - gap; i++)
+		for (i = idx; i < subsize - gap + idx; i++)
 			cmpswap(array, i, i + gap, dir);
 	printf("Result [%lu/%lu] (%s):\n",
 	       subsize, size, dir == up ? "UP" : "DOWN");
@@ -65,7 +65,7 @@ void cmpswap(int *array, size_t i, size_t j, int dir)
 {
 	int tmp;
 
-	if (dir == (array[i] > array[j]))
+	if (dir == (array[i] > array[j] ? 1 : 0))
 	{
 		tmp = array[i];
 		array[i] = array[j];
