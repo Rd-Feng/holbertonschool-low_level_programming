@@ -27,7 +27,8 @@ void bs_helper(int *array, size_t size, size_t subsize, size_t idx, int dir)
 
 	if (subsize > 1)
 	{
-		printf("Merging [%d/%d] (%s):\n", subsize, size, dir ? "UP" : "DOWN");
+		printf("Merging [%lu/%lu] (%s):\n",
+		       subsize, size, dir ? "UP" : "DOWN");
 		bs_helper(array, size, sub, idx, up);
 		bs_helper(array, size, sub, idx + sub, down);
 		bs_merge(array, size, subsize, idx, dir);
