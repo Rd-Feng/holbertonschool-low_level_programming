@@ -48,7 +48,7 @@ size_t h_partition(int *array, size_t size, size_t lo, size_t hi)
 
 	while (1)
 	{
-		while (array[L] <= pivot && L < size - 1)
+		while (array[L] <= pivot && L < hi)
 			L++;
 		while (array[R] > pivot && R > lo)
 			R--;
