@@ -44,28 +44,25 @@ void h_helper(int *array, size_t size, size_t lo, size_t hi)
 size_t h_partition(int *array, size_t size, size_t lo, size_t hi)
 {
 	int pivot = array[hi];
-	size_t L = lo, R = hi;
+	size_t l = lo, r = hi;
 
-	/*printf("partition: lo = %d, hi = %d\n", array[lo], array[hi]);
-	  print_array(array + lo, hi - lo + 1);*/
-	while (L < R)
+	while (l < r)
 	{
-		while (array[L] < pivot)
-			L++;
-		while (array[R] > pivot)
-			R--;
-		/*printf("before swap: L = %d, R = %d\n", array[L], array[R]);*/
-		if (L < R)
-			swap(array, L++, R, size);
+		while (array[l] < pivot)
+			l++;
+		while (array[r] > pivot)
+			r--;
+		if (l < r)
+			swap(array, l++, r, size);
 		else
 			break;
 	}
-	if (L != R)
-		return (R);
-	else if (R == lo)
+	if (l != r)
+		return (r);
+	else if (r == lo)
 		return (lo);
 	else
-		return (R - 1);
+		return (r - 1);
 }
 /**
  * swap - swap two elements and print array
@@ -78,11 +75,8 @@ void swap(int *array, size_t i, size_t j, size_t size)
 {
 	int tmp;
 
-	if (array[i] != array[j])
-	{
-		tmp = array[i];
-		array[i] = array[j];
-		array[j] = tmp;
-		print_array(array, size);
-	}
+	tmp = array[i];
+	array[i] = array[j];
+	array[j] = tmp;
+	print_array(array, size);
 }
