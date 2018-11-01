@@ -27,8 +27,7 @@ void h_helper(int *array, size_t size, size_t lo, size_t hi)
 	if (lo < hi)
 	{
 		p = h_partition(array, size, lo, hi);
-		if (p > 0)
-			h_helper(array, size, lo, p);
+		h_helper(array, size, lo, p);
 		h_helper(array, size, p + 1, hi);
 	}
 }
@@ -56,7 +55,7 @@ size_t h_partition(int *array, size_t size, size_t lo, size_t hi)
 			swap(array, L, R, size);
 		else
 		{
-			if (R != hi)
+			if (hi != R)
 				return (R);
 			return (R - 1);
 		}
