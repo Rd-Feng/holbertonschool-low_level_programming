@@ -46,21 +46,26 @@ size_t h_partition(int *array, size_t size, size_t lo, size_t hi)
 	int pivot = array[hi];
 	size_t L = lo, R = hi;
 
-	while (1)
+	/*printf("partition: lo = %d, hi = %d\n", array[lo], array[hi]);
+	  print_array(array + lo, hi - lo + 1);*/
+	while (L < R)
 	{
-		while (array[L] <= pivot && L < hi)
+		while (array[L] < pivot)
 			L++;
-		while (array[R] > pivot && R > lo)
+		while (array[R] > pivot)
 			R--;
+		/*printf("before swap: L = %d, R = %d\n", array[L], array[R]);*/
 		if (L < R)
-			swap(array, L, R, size);
+			swap(array, L++, R, size);
 		else
-		{
-			if (hi != R)
-				return (R);
-			return (R - 1);
-		}
+			break;
 	}
+	if (L != R)
+		return (R);
+	else if (R == lo)
+		return (lo);
+	else
+		return (R - 1);
 }
 /**
  * swap - swap two elements and print array
