@@ -53,7 +53,7 @@ int h_partition(int *array, size_t size, int lo, int hi)
 		while (array[r] > pivot)
 			r--;
 		if (l < r)
-			swap(array, l++, r, size);
+			swap(array, l++, r--, size);
 		else
 			break;
 	}
