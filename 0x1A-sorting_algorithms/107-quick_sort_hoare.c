@@ -1,7 +1,7 @@
 #include "sort.h"
-void swap(int *array, size_t i, size_t j, size_t size);
-void h_helper(int *array, size_t size, size_t lo, size_t hi);
-size_t h_partition(int *array, size_t size, size_t lo, size_t hi);
+void swap(int *array, int i, int j, size_t size);
+void h_helper(int *array, size_t size, int lo, int hi);
+int h_partition(int *array, size_t size, int lo, int hi);
 /**
  * quick_sort_hoare - quick sort array
  * @array: array
@@ -20,14 +20,19 @@ void quick_sort_hoare(int *array, size_t size)
  * @lo: lower bound
  * @hi: upper bound
  */
-void h_helper(int *array, size_t size, size_t lo, size_t hi)
+void h_helper(int *array, size_t size, int lo, int hi)
 {
-	size_t p;
+	int p;
 
 	if (lo < hi)
 	{
 		p = h_partition(array, size, lo, hi);
+<<<<<<< HEAD
 		h_helper(array, size, lo, p);
+=======
+		if (p > lo)
+			h_helper(array, size, lo, p);
+>>>>>>> 05c476bfdac188cffa3c16747618ee8a27d733bf
 		h_helper(array, size, p + 1, hi);
 	}
 }
@@ -40,10 +45,10 @@ void h_helper(int *array, size_t size, size_t lo, size_t hi)
  *
  * Return: pivot index
  */
-size_t h_partition(int *array, size_t size, size_t lo, size_t hi)
+int h_partition(int *array, size_t size, int lo, int hi)
 {
 	int pivot = array[hi];
-	size_t l = lo, r = hi;
+	int l = lo, r = hi;
 
 	while (l < r)
 	{
@@ -52,14 +57,12 @@ size_t h_partition(int *array, size_t size, size_t lo, size_t hi)
 		while (array[r] > pivot)
 			r--;
 		if (l < r)
-			swap(array, l++, r, size);
+			swap(array, l++, r--, size);
 		else
 			break;
 	}
 	if (l != r)
 		return (r);
-	else if (r == lo)
-		return (lo);
 	else
 		return (r - 1);
 }
@@ -70,7 +73,7 @@ size_t h_partition(int *array, size_t size, size_t lo, size_t hi)
  * @j: j
  * @size: size
  */
-void swap(int *array, size_t i, size_t j, size_t size)
+void swap(int *array, int i, int j, size_t size)
 {
 	int tmp;
 
