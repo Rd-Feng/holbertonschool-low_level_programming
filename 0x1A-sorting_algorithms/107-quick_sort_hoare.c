@@ -44,22 +44,18 @@ void h_helper(int *array, size_t size, int lo, int hi)
 int h_partition(int *array, size_t size, int lo, int hi)
 {
 	int pivot = array[hi];
-	int l = lo - 1, r = hi + 1;
+	/*int l = lo - 1, r = hi + 1;*/
+	int l = lo, r = hi;
 
 	while (1)
 	{
-		do {
+		while (array[l] < pivot)
 			l++;
-		} while (array[l] < pivot);
-
-		do {
+		while (array[r] > pivot)
 			r--;
-		} while (array[r] > pivot);
 
 		if (l < r)
-		{
-			swap(array, l, r, size);
-		}
+			swap(array, l++, r--, size);
 		else
 		{
 			if (l != r)
