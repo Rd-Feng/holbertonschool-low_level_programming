@@ -27,12 +27,8 @@ void h_helper(int *array, size_t size, int lo, int hi)
 	if (lo < hi)
 	{
 		p = h_partition(array, size, lo, hi);
-<<<<<<< HEAD
-		h_helper(array, size, lo, p);
-=======
 		if (p > lo)
 			h_helper(array, size, lo, p);
->>>>>>> 05c476bfdac188cffa3c16747618ee8a27d733bf
 		h_helper(array, size, p + 1, hi);
 	}
 }
@@ -48,23 +44,29 @@ void h_helper(int *array, size_t size, int lo, int hi)
 int h_partition(int *array, size_t size, int lo, int hi)
 {
 	int pivot = array[hi];
-	int l = lo, r = hi;
+	int l = lo - 1, r = hi + 1;
 
-	while (l < r)
+	while (1)
 	{
-		while (array[l] < pivot)
+		do {
 			l++;
-		while (array[r] > pivot)
+		} while (array[l] < pivot);
+
+		do {
 			r--;
+		} while (array[r] > pivot);
+
 		if (l < r)
-			swap(array, l++, r--, size);
+		{
+			swap(array, l, r, size);
+		}
 		else
-			break;
+		{
+			if (l != r)
+				return (r);
+			return (r - 1);
+		}
 	}
-	if (l != r)
-		return (r);
-	else
-		return (r - 1);
 }
 /**
  * swap - swap two elements and print array
