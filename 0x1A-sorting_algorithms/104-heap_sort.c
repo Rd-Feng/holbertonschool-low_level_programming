@@ -1,6 +1,6 @@
 #include "sort.h"
 void heaplify(int *array, size_t size, size_t cur_idx, size_t s);
-void siftdown(int *array, size_t size, size_t heap_size);
+void siftdown(int *array, size_t size, size_t heap_size, size_t root);
 void swap(int *array, size_t size, size_t e1, size_t e2);
 /**
  * heap_sort - heap sort on array
@@ -18,8 +18,7 @@ void heap_sort(int *array, size_t size)
 	{
 		swap(array, size, 0, heap_size - 1);
 		heap_size--;
-		/*siftdown(array, size, heap_size);*/
-		heaplify(array, heap_size, 0, size);
+		siftdown(array, size, heap_size, 0);
 	}
 }
 /**
@@ -31,23 +30,14 @@ void heap_sort(int *array, size_t size)
  */
 void heaplify(int *array, size_t size, size_t cur_idx, size_t s)
 {
-	size_t l_idx = 2 * cur_idx + 1;
-	size_t r_idx = 2 * cur_idx + 2;
-	size_t max_idx = cur_idx;
+	size_t i;
+	(void) s;
 
-	if (l_idx < size)
-		heaplify(array, size, l_idx, s);
-	if (r_idx < size)
-		heaplify(array, size, r_idx, s);
-
-	if (l_idx < size && array[cur_idx] < array[l_idx])
-		max_idx = l_idx;
-	if (r_idx < size && array[max_idx] < array[r_idx])
-		max_idx = r_idx;
-	if (max_idx != cur_idx)
+	for (i = (size - 2) / 2; i >= cur_idx; i--)
 	{
-		swap(array, s, cur_idx, max_idx);
-		heaplify(array, size, max_idx, s);
+		siftdown(array, size, size - 1, i);
+		if (i == 0)
+			break;
 	}
 }
 /**
@@ -55,27 +45,28 @@ void heaplify(int *array, size_t size, size_t cur_idx, size_t s)
  * @array: array
  * @heap_size: current heap size
  * @size: size of array
+ * @root: root index
  */
-void siftdown(int *array, size_t size, size_t heap_size)
+void siftdown(int *array, size_t size, size_t heap_size, size_t root)
 {
-	size_t cur = 0, target = 0;
+	size_t target = root;
 	size_t left, right;
 
-	left = cur * 2 + 1;
-	right = cur * 2 + 2;
+	left = root * 2 + 1;
+	right = root * 2 + 2;
 	while (left < heap_size || right < heap_size)
 	{
-		if (left < heap_size && array[cur] < array[left])
+		if (left < heap_size && array[root] < array[left])
 			target = left;
 		if (right < heap_size && array[target] < array[right])
 			target = right;
-		if (target != cur)
-			swap(array, size, cur, target);
+		if (target != root)
+			swap(array, size, root, target);
 		else
 			break;
-		cur = target;
-		left = cur * 2 + 1;
-		right = cur * 2 + 2;
+		root = target;
+		left = root * 2 + 1;
+		right = root * 2 + 2;
 	}
 }
 /**
