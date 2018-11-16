@@ -5,8 +5,6 @@ defines function island_perimeter"""
 
 def island_perimeter(grid):
     """returns the perimeter of the island"""
-    if not grid:
-        return 0
     up, left, right, down = 0, 0, len(grid[0]), len(grid)
     p = 0
     for i in range(up + 1, down - 1):
@@ -17,13 +15,3 @@ def island_perimeter(grid):
                 p += 1 if not grid[i][j + 1] else 0
                 p += 1 if not grid[i + 1][j] else 0
     return p
-
-if __name__ == "__main__":
-    grid = [
-        [0, 0, 0, 0, 0, 0],
-        [0, 1, 1, 0, 0, 0],
-        [0, 1, 0, 1, 0, 0],
-        [0, 1, 1, 1, 0, 0],
-        [0, 0, 0, 0, 0, 0]
-    ]
-    print(island_perimeter(grid))
