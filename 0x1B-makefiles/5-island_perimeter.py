@@ -11,7 +11,7 @@ def island_perimeter(grid):
         for j in range(left, right):
             if grid[i][j] == 1:
                 p += 1 if i == up or not grid[i - 1][j] else 0
-                p += 1 if j == left - 1 or not grid[i][j - 1] else 0
+                p += 1 if j == left or not grid[i][j - 1] else 0
                 p += 1 if j == right - 1 or not grid[i][j + 1] else 0
                 p += 1 if i == down - 1 or not grid[i + 1][j] else 0
     return p
