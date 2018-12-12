@@ -1,5 +1,4 @@
 #include "binary_trees.h"
-size_t _max(size_t a, size_t b);
 /**
  * binary_tree_is_perfect - check if a binary tree is perfect
  * @tree: tree
@@ -8,12 +7,15 @@ size_t _max(size_t a, size_t b);
  */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	if (tree && binary_tree_balance(tree) == 0)
-	{
-		return (1 & (binary_tree_is_perfect(tree->left) == 0 ? 1 : 0)
-				& (binary_tree_is_perfect(tree->right) == 0 ? 1 : 0));
-	}
-	return (0);
+	int r = 1;
+
+	if (!tree || binary_tree_balance(tree) != 0)
+		return (0);
+	if (tree->left)
+		r = r & binary_tree_is_perfect(tree->left);
+	if (tree->right)
+		r = r & binary_tree_is_perfect(tree->right);
+	return (r);
 }
 /**
  * binary_tree_balance - measures the balance factor of a binary tree

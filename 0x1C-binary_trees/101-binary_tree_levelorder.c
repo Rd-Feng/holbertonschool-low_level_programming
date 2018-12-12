@@ -1,5 +1,4 @@
 #include "binary_trees.h"
-size_t _max(size_t a, size_t b);
 void push_nodes(binary_tree_t *tree, int depth, binary_tree_t **arr);
 /**
  * binary_tree_levelorder - level order traverse

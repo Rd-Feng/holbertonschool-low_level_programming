@@ -1,5 +1,4 @@
 #include "binary_trees.h"
-size_t _max(size_t, size_t);
 /**
  * binary_tree_height - height of a tree
  * @tree: tree

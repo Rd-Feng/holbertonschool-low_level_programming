@@ -1,5 +1,4 @@
 #include "binary_trees.h"
-size_t _max(size_t, size_t);
 /**
  * binary_tree_balance - measures the balance factor of a binary tree
  * @tree: tree
