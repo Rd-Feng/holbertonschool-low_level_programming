@@ -9,12 +9,14 @@ int bst_inorder_check(binary_tree_t *tree, int *p);
  */
 int binary_tree_is_bst(const binary_tree_t *tree)
 {
-	int *p = malloc(sizeof(int));
+	int *p = malloc(sizeof(int)), ret = 0;
 
 	*p = INT_MIN;
 	if (tree)
-		return (bst_inorder_check((binary_tree_t *) tree, p));
-	return (0);
+		ret = bst_inorder_check((binary_tree_t *) tree, p);
+	if (p)
+		free(p);
+	return (ret);
 }
 /**
  * bst_inorder_check - in order traverse a bst. check if sorted
