@@ -1,6 +1,5 @@
 #include "binary_trees.h"
 #include <limits.h>
-#include <stdio.h>
 int bst_inorder_check(binary_tree_t *tree, int *p);
 /**
  * binary_tree_is_bst - check if a tree is bst
@@ -30,7 +29,6 @@ int bst_inorder_check(binary_tree_t *tree, int *p)
 	{
 		if (!bst_inorder_check(tree->left, p))
 			return (0);
-		printf("cur: %d, prev: %d\n", tree->n, *p);
 		if (*p >= tree->n)
 			return (0);
 		*p = tree->n;
