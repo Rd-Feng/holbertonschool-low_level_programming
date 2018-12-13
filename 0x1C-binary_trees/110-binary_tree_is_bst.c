@@ -28,7 +28,7 @@ int bst_inorder_check(binary_tree_t *tree, binary_tree_t **prev)
 	{
 		if (!bst_inorder_check(tree->left, prev))
 			return (0);
-		if (prev && (*prev)->n > tree->n)
+		if (prev && (*prev)->n >= tree->n)
 			return (0);
 		prev = &tree;
 		if (!bst_inorder_check(tree->right, prev))
