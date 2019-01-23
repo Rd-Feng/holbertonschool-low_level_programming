@@ -29,5 +29,5 @@ int interpolation_search(int *array, size_t size, int value)
 		else
 			r = p - 1;
 	}
-	return (array[l] == value ? l : -1);
+	return (array && array[l] == value ? l : -1);
 }
