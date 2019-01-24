@@ -27,13 +27,13 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 		l = r;
 		for (i = r->index + ws; r->index < i && r->next; r = r->next)
 			;
-		printf("Value checked array[%lu] = [%d]\n",
+		printf("Value checked at index [%lu] = [%d]\n",
 			r->index, r->n
 		);
 	}
 	for (; l != r->next; l = l->next)
 	{
-		printf("Value checked array[%lu] = [%d]\n", l->index, l->n);
+		printf("Value checked at index [%lu] = [%d]\n", l->index, l->n);
 		if (l->n == value)
 			return (l);
 	}
