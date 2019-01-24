@@ -28,7 +28,7 @@ int advanced_binary_helper(int *array, int l, int r, int value)
 {
 	int mid;
 
-	if (l <= r)
+	if (l < r)
 	{
 		print_array_bs_adv(array, l, r);
 		mid = (l + r) / 2;
@@ -43,7 +43,7 @@ int advanced_binary_helper(int *array, int l, int r, int value)
 		else
 			return (advanced_binary_helper(array, l, mid, value));
 	}
-	return (-1);
+	return (array[l] == value ? l : -1);
 }
 /**
  * print_array_bs_adv - print array for binary search
