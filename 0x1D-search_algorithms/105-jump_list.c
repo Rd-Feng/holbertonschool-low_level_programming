@@ -14,6 +14,8 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 	size_t i = 0;
 	listint_t *l = list, *r = list;
 
+	if (!list)
+		return (NULL);
 	while (list)
 	{
 		if (r->index == size - 1 || r->n >= value)
