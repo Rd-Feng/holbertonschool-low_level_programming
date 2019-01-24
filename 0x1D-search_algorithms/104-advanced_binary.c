@@ -28,9 +28,9 @@ int advanced_binary_helper(int *array, int l, int r, int value)
 {
 	int mid;
 
+	print_array_bs_adv(array, l, r);
 	if (l < r)
 	{
-		print_array_bs_adv(array, l, r);
 		mid = (l + r) / 2;
 		if (array[mid] == value)
 		{
