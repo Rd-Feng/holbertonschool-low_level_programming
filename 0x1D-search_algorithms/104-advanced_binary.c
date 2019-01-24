@@ -34,14 +34,14 @@ int advanced_binary_helper(int *array, int l, int r, int value)
 		mid = (l + r) / 2;
 		if (array[mid] == value)
 		{
-			if (mid == 0 || array[mid - 1] < value)
-				return (mid);
-			return (advanced_binary_helper(array, l, mid, value));
+			if (mid > 0 && array[mid - 1] == value)
+				return (advanced_binary_helper(array, l, mid, value));
+			return (mid);
 		}
 		else if (array[mid] < value)
 			return (advanced_binary_helper(array, mid + 1, r, value));
 		else
-			return (advanced_binary_helper(array, l, mid - 1, value));
+			return (advanced_binary_helper(array, l, mid, value));
 	}
 	return (-1);
 }
